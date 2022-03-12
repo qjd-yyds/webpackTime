@@ -19,18 +19,18 @@ module.exports = function (api) {
     ]
   ];
   const plugins = [
-    // js装饰器
-    ['@babel/plugin-proposal-decorators', { legacy: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: true }],
     [
       '@vue/babel-plugin-jsx',
       {
-        transformOn: false,
+        transformOn: false, // 把on: { click: xx } 转成 onClick: xxx
         optimize: false,
         mergeProps: true,
         enableObjectSlots: true // 启动插槽
       }
-    ]
+    ],
+    // js装饰器
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }]
   ];
   return {
     presets,

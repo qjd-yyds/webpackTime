@@ -1,11 +1,13 @@
 <template>
   <div class="app">
+    <Tab />
     <canvas ref="canvas" class="draw-canvas" width="500" height="500"></canvas>
   </div>
 </template>
 
 <script lang="ts">
 import { onMounted, defineComponent, ref } from 'vue';
+import Tab from './Tab';
 export default defineComponent({
   name: 'app',
   setup: () => {
@@ -19,6 +21,9 @@ export default defineComponent({
     return {
       canvas
     };
+  },
+  components: {
+    Tab
   }
 });
 </script>

@@ -34,11 +34,11 @@ const config = {
   resolve: {
     // 路径别名
     alias: {
+      // vue$: 'vue/dist/vue.esm.js',
       '@': PATHS.src,
       '~': PATHS.src
     },
-    // ...表示默认配置
-    extensions: ['.ts', '.tsx', '.vue', '.js', '.json', '.wasm'], // 引入时，不加入后缀
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.wasm'], // 引入时，不加入后缀
     modules: [PATHS.src, 'node_modules'] // 优先搜索src目录
   },
   externals: {
@@ -57,7 +57,7 @@ const config = {
     noParse: /jquery|lodash/, //忽略模块文件中不会解析require和import语法
     rules: [
       {
-        test: /\.js$/i,
+        test: /\.jsx$/i,
         include: PATHS.src, // 需要解析的
         exclude: /node_modules/, // 排除解析
         use: [
@@ -113,16 +113,17 @@ const config = {
         use: ['vue-loader']
       },
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
+          'babel-loader',
           {
             loader: 'ts-loader',
             options: {
               // 指定特定的ts编译配置，为了区分脚本的ts配置
               // 注意这里的路径问题，按照自己项目来配置
               configFile: PATHS.tsConfig,
-              appendTsSuffixTo: [/\.vue$/],
+              // appendTsSuffixTo: [/\.vue$/], // 自动将vue变成jsx
               /* 只做语言转换，而不做类型检查, 这里如果不设置成TRUE，就会HMR 报错 */
               transpileOnly: true
             }
