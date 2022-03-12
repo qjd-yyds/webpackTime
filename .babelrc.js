@@ -21,7 +21,16 @@ module.exports = function (api) {
   const plugins = [
     // js装饰器
     ['@babel/plugin-proposal-decorators', { legacy: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: true }]
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    [
+      '@vue/babel-plugin-jsx',
+      {
+        transformOn: false,
+        optimize: false,
+        mergeProps: true,
+        enableObjectSlots: true // 启动插槽
+      }
+    ]
   ];
   return {
     presets,

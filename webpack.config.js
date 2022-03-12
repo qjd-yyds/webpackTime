@@ -6,17 +6,22 @@ const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const chalk = require('chalk');
 
 const glob = require('glob'); // 文件匹配模式
 
 const resolve = (dir) => path.resolve(__dirname, dir);
 const PATHS = {
-  src: resolve('src')
+  src: resolve('src'),
+  dist: resolve('dist'),
+  tsConfig: resolve('./tsconfig.json'),
+  public: resolve('public')
 };
 
 const config = {
-  entry: resolve('src/index.js'),
+  entry: resolve('src/index.ts'),
   devtool: 'source-map', // 开启source-map
   mode: 'development', // production   development none
   stats: {
@@ -29,12 +34,12 @@ const config = {
   resolve: {
     // 路径别名
     alias: {
-      '@': resolve('src'),
-      '~': resolve('src')
+      '@': PATHS.src,
+      '~': PATHS.src
     },
     // ...表示默认配置
-    extensions: ['.ts', '...'], // 引入时，不加入后缀
-    modules: [resolve('src'), 'node_modules'] // 优先搜索src目录
+    extensions: ['.ts', '.tsx', '.vue', '.js', '.json', '.wasm'], // 引入时，不加入后缀
+    modules: [PATHS.src, 'node_modules'] // 优先搜索src目录
   },
   externals: {
     jquery: 'jQuery' // 从cdn打包
@@ -45,7 +50,7 @@ const config = {
   },
   output: {
     filename: 'boundle.js',
-    path: resolve('dist'),
+    path: PATHS.dist,
     clean: true // 每次打包清理目录
   },
   module: {
@@ -53,7 +58,7 @@ const config = {
     rules: [
       {
         test: /\.js$/i,
-        include: resolve('src'), // 需要解析的
+        include: PATHS.src, // 需要解析的
         exclude: /node_modules/, // 排除解析
         use: [
           {
@@ -102,6 +107,27 @@ const config = {
             maxSize: 10 * 1024 // 超过10kb不转 base64
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              // 指定特定的ts编译配置，为了区分脚本的ts配置
+              // 注意这里的路径问题，按照自己项目来配置
+              configFile: PATHS.tsConfig,
+              appendTsSuffixTo: [/\.vue$/],
+              /* 只做语言转换，而不做类型检查, 这里如果不设置成TRUE，就会HMR 报错 */
+              transpileOnly: true
+            }
+          }
+        ]
       }
     ]
   },
@@ -126,11 +152,13 @@ const config = {
       complete: '█',
       format: `${chalk.green('Building')} [ ${chalk.green(':bar')} ] ':msg:' ${chalk.bold('(:percent)')}`,
       clear: true
-    })
+    }),
+    new VueLoaderPlugin(), // 解析vueSFC
+    new ForkTsCheckerWebpackPlugin()
   ],
   devServer: {
     static: {
-      directory: resolve('public')
+      directory: PATHS.public
     },
     hot: true, // 开启热替换
     compress: true, //是否启动压缩 gzip
