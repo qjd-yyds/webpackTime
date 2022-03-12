@@ -1,6 +1,6 @@
-const a = 'Hello ITEM';
-import './main.css';
-console.log(a);
-console.log(1111);
+import './style.scss';
+import '@/fonts/iconfont.css';
+import _ from 'lodash';
 console.log(process.env.NODE_ENV);
-export default a;
+const num = _.add(1, 2);
+console.log(num);

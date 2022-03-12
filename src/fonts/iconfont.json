@@ -1,0 +1,44 @@
+{
+  "id": "1630129",
+  "name": "图标",
+  "font_family": "iconfont",
+  "css_prefix_text": "my-icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12446721",
+      "name": "Loading Indicator",
+      "font_class": "LoadingIndicator",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6077736",
+      "name": "人",
+      "font_class": "ren",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "6906987",
+      "name": "物资管理",
+      "font_class": "wuziguanli",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "12210104",
+      "name": "出口",
+      "font_class": "chukou",
+      "unicode": "e734",
+      "unicode_decimal": 59188
+    },
+    {
+      "icon_id": "13167218",
+      "name": "巴黎",
+      "font_class": "bali",
+      "unicode": "e706",
+      "unicode_decimal": 59142
+    }
+  ]
+}
