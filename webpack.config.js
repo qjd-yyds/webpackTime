@@ -76,7 +76,23 @@ const config = {
           // "style-lodaer",
           MiniCssPlugin.loader, // 将css 通过css引入
           'cache-loader', // 缓存
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local', // 控制应用于输入样式的编译级别
+                auto: true, // 基于名字开启模块化
+                // exportGlobals: true,
+                localIdentName: '[name][hash:base64]',
+                // localIdentContext: path.resolve(__dirname, 'src'),
+                // localIdentHashSalt: 'my-custom-hash',
+                // namedExport: true,
+                // exportLocalsConvention: 'camelCase',
+                // exportOnlyLocals: false
+              }, //开启css模块化
+              importLoaders: 2
+            }
+          },
           'postcss-loader',
           'sass-loader'
         ]
