@@ -43,6 +43,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "chinese-random-name": "^1.0.0",
     "lodash": "^4.17.21",
     "vue": "^3.2.31"
   },

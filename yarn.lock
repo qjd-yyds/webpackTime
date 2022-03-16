@@ -2010,6 +2010,14 @@ charcodes@^0.2.0:
   resolved "https://registry.npmmirror.com/charcodes/-/charcodes-0.2.0.tgz#5208d327e6cc05f99eb80ffc814707572d1f14e4"
   integrity sha512-Y4kiDb+AM4Ecy58YkuZrrSRJBDQdQ2L+NyS1vHHFtNtUjgutcZfx3yp1dAONI/oPaPmyGfCLx5CxL+zauIMyKQ==
 
+chinese-random-name@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmmirror.com/chinese-random-name/-/chinese-random-name-1.0.0.tgz#19e0b685e917f17295fae1b0324fdedaf95f5f5f"
+  integrity sha512-0ZJ0LhV4O9vqas4IgQB7IDqqSovpSoHlvZo3FWXShKBfs6BS7l4uRQVqin54D4KNrG81G7cZ7p6YIpn93fo2wQ==
+  dependencies:
+    flatten "^1.0.2"
+    random-to "0.0.2"
+
 chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmmirror.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
@@ -2867,6 +2875,11 @@ find-up@^4.0.0, find-up@^4.1.0:
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
+
+flatten@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
+  integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
 
 follow-redirects@^1.0.0:
   version "1.14.9"
@@ -4989,6 +5002,11 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmmirror.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
+
+random-to@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmmirror.com/random-to/-/random-to-0.0.2.tgz#4683b9f257cfb964aa3d7b323e008a20c6e85a76"
+  integrity sha512-ZuN1RFci2EBqx0fj2oClPUDEZ5FS20nxz0zXikR1ip1NUyu99i+2X9nL4872b7tESBatVaLXtMHHcxc7S4c9VA==
 
 randombytes@^2.1.0:
   version "2.1.0"
