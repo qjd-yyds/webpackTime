@@ -38,7 +38,7 @@ const config = {
       '@': PATHS.src,
       '~': PATHS.src
     },
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.json', '.wasm'], // 引入时，不加入后缀
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue', '.wasm'], // 引入时，不加入后缀
     modules: [PATHS.src, 'node_modules'] // 优先搜索src目录
   },
   externals: {
@@ -57,9 +57,13 @@ const config = {
     noParse: /jquery|lodash/, //忽略模块文件中不会解析require和import语法
     rules: [
       {
-        test: /\.jsx$/i,
+        test: /\.(mjs|js|jsx)$/i,
         include: PATHS.src, // 需要解析的
+        type: 'javascript/auto',
         exclude: /node_modules/, // 排除解析
+        resolve: {
+          fullySpecified: false // disable the behaviour
+        },
         use: [
           {
             loader: 'thread-loader', // 多线程打包
@@ -83,7 +87,7 @@ const config = {
                 mode: 'local', // 控制应用于输入样式的编译级别
                 auto: true, // 基于名字开启模块化
                 // exportGlobals: true,
-                localIdentName: '[name][hash:base64]',
+                localIdentName: '[name][hash:base64]'
                 // localIdentContext: path.resolve(__dirname, 'src'),
                 // localIdentHashSalt: 'my-custom-hash',
                 // namedExport: true,
