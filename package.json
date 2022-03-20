@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "lint": "npx lint-staged",
+    "prepare": "husky install",
     "dev": "cross-env NODE_ENV=dev webpack serve --mode development",
     "test": "cross-env NODE_ENV=test webpack --mode production",
     "build": "cross-env NODE_ENV=prod webpack --mode development",
@@ -28,6 +30,8 @@
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",

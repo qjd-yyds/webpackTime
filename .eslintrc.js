@@ -11,6 +11,8 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'import/no-extraneous-dependencies': false,
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
+    'no-console': 'off',
   },
 }
